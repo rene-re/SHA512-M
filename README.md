@@ -1,4 +1,4 @@
-# SHA512‑M  —  SHA‑512 & HMAC‑SHA‑512 for Power Query
+# SHA‑512 & HMAC‑SHA‑512 for Power Query
 
 This library is entirely written in M and works in all Power Query environments, including: Excel, Power BI Desktop/Service and Fabric Dataflows.
 
