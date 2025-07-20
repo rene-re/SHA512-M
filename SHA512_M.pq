@@ -1,11 +1,16 @@
 /*  =====================================================================
-    Pure‑M SHA‑512  +  HMAC‑SHA‑512
+    SHA‑512 & HMAC‑SHA‑512  —  Power Query (M) implementation
     ─────────────────────────────────────────────────────────────────────
-    Exports three members:
-
-        HMAC512(secret as text, msg as text) => text  – RFC 2104
-        SHA512 (bin as binary)               => binary – raw hash
-        SelfTest()                           => record – RFC test vectors
+    Author : René Reineke rene@o9.digital
+    License: MIT  (see LICENSE)
+    Repo   : https://github.com/rene-re/SHA512‑M
+    Exports:
+        • HMAC512(secret as text, msg as text) → text   (RFC 2104, hex)
+        • SHA512 (bin as binary)               → binary (64‑byte hash)
+        • SelfTest()                           → record (RFC vectors)
+    Notes :
+        • 100 % managed M — no JavaScript bridge (deprecated in PQ) or
+          external DLLs required; works in Excel, Power BI, Dataflows.
     ===================================================================== */
 
 let
@@ -312,7 +317,6 @@ let
             Record.AddField(tests, "AllPass", allOk)
 
 in
-    /* exported namespace ----------------------------------------------------*/
     [
         HMAC512 = HMAC512,
         SHA512  = SHA512,

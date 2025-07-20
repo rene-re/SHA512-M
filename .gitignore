@@ -1,0 +1,8 @@
+# Power BI autosave & VS Code
+*.pbix.autosave
+.vscode/
+*.code-workspace
+
+# OS cruft
+.DS_Store
+Thumbs.db
