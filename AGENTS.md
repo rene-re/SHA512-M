@@ -9,14 +9,15 @@ SHA512-M is a pure M (Power Query) library implementing SHA-512 and HMAC-SHA-512
 
 ## Architecture
 **Single file structure** (SHA512_M.pq):
-1. **32-bit helpers** (lines 18–41): UInt32 wrapper, Add32, Xor/And/Or/Not, Lsr32, Ror32
+1. **32-bit helpers** (lines 20–41): UInt32 wrapper, Add32, Xor/And/Or/Not, Lsr32, Ror32
 2. **64-bit helpers** (lines 46–108): Add64, Ror64, ShR64, Xor64, sigma/Sigma functions
 3. **SHA-512 constants** (lines 113–134): 80 × 64-bit K array
 4. **SHA-512 core** (lines 139–226): Padding, initial hash H0, 80-round compressor
 5. **HMAC-SHA-512** (lines 234–249): RFC 2104 implementation
-6. **Self-tests** (lines 261–317): RFC 6234/4231 test vectors
+6. **Helper for self-tests** (lines 255–256): BytesToText
+7. **Self-tests** (lines 261–317): RFC 6234/4231 test vectors
 
-Exports: `HMAC512(secret, msg)`, `SHA512(bin)`, `SelfTest()`
+Exports: `HMAC512(secret, msg)`, `SHA512(bin)`, `SelfTest()` (lines 320–324)
 
 ## Code Style
 - **Format**: Pure M; all functions are pure expressions (no side effects)
