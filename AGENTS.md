@@ -26,3 +26,4 @@ Exports: `HMAC512(secret, msg)`, `SHA512(bin)`, `SelfTest()` (lines 320–324)
 - **Comments**: Delimit sections with `//--` lines; inline notes use `/* */`
 - **No formatting tool**: Manual formatting; maintain readable 100–120 char lines
 - **Binary/text**: Use `Text.ToBinary()` with `TextEncoding.Utf8`, output hex via `ToHex()`
+- **Edits**: Keep section order and exports stable; update line ranges if they change

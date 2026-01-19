@@ -23,3 +23,25 @@ let
     hex    = Binary.ToText(digest, BinaryEncoding.Hex)
 in
     hex
+```
+
+## Install
+1. Open Power Query and create a blank query.
+2. Paste the full contents of `SHA512_M.pq`.
+3. Name the query `SHA512_M` (or any name you prefer).
+
+## Usage
+```powerquery
+let
+    digest = SHA512(Text.ToBinary("abc", TextEncoding.Utf8)),
+    hex    = Binary.ToText(digest, BinaryEncoding.Hex),
+    hmac   = HMAC512("key", "The quick brown fox"),
+    tests  = SelfTest()
+in
+    [Hex = hex, Hmac = hmac, Tests = tests]
+```
+
+## Notes
+- `SHA512` returns a `binary`; use `Binary.ToText(..., BinaryEncoding.Hex)` for hex.
+- `HMAC512` returns a lowercase hex string.
+- `SelfTest()` returns a record where `AllPass = true` when vectors pass.
