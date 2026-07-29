@@ -3,14 +3,14 @@
     ─────────────────────────────────────────────────────────────────────
     Author : René Reineke rene@o9.digital
     License: MIT  (see LICENSE)
-    Repo   : https://github.com/rene-re/SHA512‑M
+    Repo   : https://github.com/rene-re/SHA512-M
     Exports:
         • HMAC512(secret as text, msg as text) → text   (RFC 2104, hex)
         • SHA512 (bin as binary)               → binary (64‑byte hash)
         • SelfTest()                           → record (RFC vectors)
     Notes :
         • 100 % managed M — no JavaScript bridge (deprecated in PQ) or
-          external DLLs required; works in Excel, Power BI, Dataflows.
+          external DLLs required; designed for Excel, Power BI, Dataflows.
     ===================================================================== */
 
 let

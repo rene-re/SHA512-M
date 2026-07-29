@@ -1,10 +1,13 @@
 # AGENTS.md – SHA512-M Development Guide
 
 ## Project Overview
-SHA512-M is a pure M (Power Query) library implementing SHA-512 and HMAC-SHA-512 according to RFC 6234 and RFC 4231. No external dependencies—works in Excel, Power BI, and Fabric Dataflows.
+SHA512-M is a pure M (Power Query) library implementing SHA-512 and HMAC-SHA-512 according to
+RFC 6234 and RFC 4231. It has no external dependencies and targets Excel, Power BI, and Fabric
+Dataflows; automated cross-host validation is planned.
 
 ## Build/Test Commands
-- **Run self-tests**: Call `SelfTest()` in Power Query. Returns a record with `AllPass = true` if all RFC vectors pass.
+- **Run self-tests**: Call `SHA512_M[SelfTest]()` from another query. Returns a record with
+  `AllPass = true` when all built-in known-answer checks pass.
 - **Validate specific hash**: Test `SHA512(binary)` against expected 64-byte outputs; test `HMAC512(secret, msg)` against hex strings.
 
 ## Architecture
