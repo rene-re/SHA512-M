@@ -41,6 +41,10 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: pqtest-failure-${{ github.run_id }}
-          path: .artifacts/pqtest/
+          path: |
+            .artifacts/pqtest/pqtest-results.json
+            .artifacts/pqtest/makepqx.log
+            .artifacts/pqtest/source/
+            .artifacts/pqtest/bin/
           if-no-files-found: warn
           retention-days: 7

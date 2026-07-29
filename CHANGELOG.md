@@ -23,3 +23,4 @@ tagged releases begin.
 
 - README examples now call functions through the exported `SHA512_M` record.
 - Source header now uses the canonical ASCII GitHub repository URL.
+- PQTest failure artifacts no longer include the extracted SDK toolchain.
