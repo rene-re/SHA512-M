@@ -22,10 +22,10 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Restore PQTest package cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ${{ runner.temp }}\pqtest-sdk-cache
           key: pqtest-windows-2.145.5-f330e803bcc0fedd
@@ -38,7 +38,7 @@ jobs:
 
       - name: Upload PQTest failure diagnostics
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: pqtest-failure-${{ github.run_id }}
           path: .artifacts/pqtest/
