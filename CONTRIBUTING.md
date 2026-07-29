@@ -23,9 +23,24 @@ files containing sensitive data, or confidential API requests.
 3. Keep arithmetic helpers pure and intermediates inside the intended 32-bit
    word range.
 4. Add or update a known-answer check when changing cryptographic behavior.
-5. Run `SHA512_M[SelfTest]()` and report the result and Power Query host in the
-   pull request.
-6. Update the README and changelog when behavior or the public API changes.
+5. On Windows with PowerShell 7, run the automated suite:
+
+   ```powershell
+   pwsh ./scripts/Invoke-PQTest.ps1
+   ```
+
+6. Run `SHA512_M[SelfTest]()` in at least one intended Power Query host and
+   report the host and result in the pull request.
+7. Update the README and changelog when behavior or the public API changes.
+
+The automated runner uses Microsoft Power Query SDK Tools `2.145.5`, verifies
+the pinned package checksum, and writes generated files only below
+`.artifacts/pqtest/`. PQTest exercises its bundled Mashup Engine; host-specific
+Excel, Power BI, and Fabric behavior still benefits from manual validation.
+SDK upgrades are deliberate because newer MakePQX releases are affected by
+[an upstream assembly-loading issue](https://github.com/microsoft/vscode-powerquery-sdk/issues/408).
+Before changing the version or checksum, repeat the cold-cache build and all
+negative-path checks.
 
 ## Code style
 
@@ -44,6 +59,7 @@ Describe:
 - the problem being solved;
 - why the change is correct;
 - the vectors or oracle used for validation;
+- the result of `pwsh ./scripts/Invoke-PQTest.ps1`;
 - the hosts used for manual execution; and
 - any compatibility or performance effect.
 

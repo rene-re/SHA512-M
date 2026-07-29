@@ -2,6 +2,7 @@
 *.pbix.autosave
 .vscode/
 *.code-workspace
+.artifacts/
 
 # OS cruft
 .DS_Store
