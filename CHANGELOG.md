@@ -8,6 +8,8 @@ tagged releases begin.
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-07-29
+
 ### Added
 
 - Automated PQTest validation for pull requests and pushes to `main`.
@@ -18,9 +20,13 @@ tagged releases begin.
 - MIT license.
 - Contribution and vulnerability-reporting guidance.
 - Project changelog.
+- Documented successful manual use in Excel Power Query.
 
 ### Fixed
 
 - README examples now call functions through the exported `SHA512_M` record.
 - Source header now uses the canonical ASCII GitHub repository URL.
 - PQTest failure artifacts no longer include the extracted SDK toolchain.
+
+[Unreleased]: https://github.com/rene-re/SHA512-M/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/rene-re/SHA512-M/releases/tag/v1.0.0

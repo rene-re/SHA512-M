@@ -132,6 +132,10 @@ manual compatibility checks in Excel, Power BI, or Fabric.
 
 ## Compatibility
 
+The current release has been manually confirmed to work in Excel Power Query.
+The other hosts below are supported design targets but do not yet have a
+documented manual verification result.
+
 The library is written entirely in standard Power Query M for use in:
 
 - Excel Power Query;
