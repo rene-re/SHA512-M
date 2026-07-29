@@ -3,9 +3,13 @@
 ## Project Overview
 SHA512-M is a pure M (Power Query) library implementing SHA-512 and HMAC-SHA-512 according to
 RFC 6234 and RFC 4231. It has no external dependencies and targets Excel, Power BI, and Fabric
-Dataflows; automated cross-host validation is planned.
+Dataflows.
 
 ## Build/Test Commands
+- **Run automated tests**: On Windows with PowerShell 7, run
+  `pwsh ./scripts/Invoke-PQTest.ps1`. The script verifies Power Query SDK Tools 2.145.5,
+  generates a test-only connector, runs all `tests/pqtest/*.query.pq` groups, and writes
+  diagnostics below `.artifacts/pqtest/`.
 - **Run self-tests**: Call `SHA512_M[SelfTest]()` from another query. Returns a record with
   `AllPass = true` when all built-in known-answer checks pass.
 - **Validate specific hash**: Test `SHA512(binary)` against expected 64-byte outputs; test `HMAC512(secret, msg)` against hex strings.

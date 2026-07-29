@@ -10,10 +10,14 @@ tagged releases begin.
 
 ### Added
 
+- Automated PQTest validation for pull requests and pushes to `main`.
+- A shared Windows/PowerShell 7 runner for local and CI execution.
+- Known-answer coverage for SHA-512 boundaries, UTF-8 HMAC inputs, public API
+  contracts, and invalid input types.
 - Clear installation, API, compatibility, security, and limitation guidance.
 - MIT license.
 - Contribution and vulnerability-reporting guidance.
-- Project roadmap and changelog.
+- Project changelog.
 
 ### Fixed
 

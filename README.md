@@ -1,5 +1,7 @@
 # SHA-512 and HMAC-SHA-512 for Power Query M
 
+[![PQTest](https://github.com/rene-re/SHA512-M/actions/workflows/pqtest.yml/badge.svg)](https://github.com/rene-re/SHA512-M/actions/workflows/pqtest.yml)
+
 Generate SHA-512 hashes and HMAC-SHA-512 signatures directly in Power Query
 M—without Python, JavaScript, external DLLs, or a custom connector.
 
@@ -105,6 +107,28 @@ The implementation follows:
 
 Run `SHA512_M[SelfTest]()` after copying the source into a new host to confirm
 that the built-in checks pass.
+
+## Automated validation
+
+Every pull request and push to `main` runs the library through Microsoft
+PQTest. The automated suite covers the built-in self-tests, SHA-512 padding
+and block boundaries, binary inputs, UTF-8 HMAC inputs, HMAC key-size
+boundaries, multi-block messages, output formats, and the documented public
+contract.
+
+On Windows with PowerShell 7, run the same suite locally:
+
+```powershell
+pwsh ./scripts/Invoke-PQTest.ps1
+```
+
+The runner downloads and verifies the pinned Power Query SDK Tools `2.145.5`
+package, builds a temporary test-only connector from `SHA512_M.pq`, and stores
+diagnostics under `.artifacts/pqtest/`. The generated connector is not a
+distribution artifact and the canonical library source is not duplicated.
+
+PQTest validates behavior with its bundled Mashup Engine. It does not replace
+manual compatibility checks in Excel, Power BI, or Fabric.
 
 ## Compatibility
 

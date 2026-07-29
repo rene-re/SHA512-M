@@ -1,0 +1,46 @@
+name: PQTest
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pqtest-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  pqtest:
+    name: PQTest
+    runs-on: windows-2022
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Restore PQTest package cache
+        uses: actions/cache@v6
+        with:
+          path: ${{ runner.temp }}\pqtest-sdk-cache
+          key: pqtest-windows-2.145.5-f330e803bcc0fedd
+
+      - name: Run automated Power Query tests
+        shell: pwsh
+        run: ./scripts/Invoke-PQTest.ps1
+        env:
+          PQTEST_SDK_CACHE: ${{ runner.temp }}\pqtest-sdk-cache
+
+      - name: Upload PQTest failure diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: pqtest-failure-${{ github.run_id }}
+          path: .artifacts/pqtest/
+          if-no-files-found: warn
+          retention-days: 7
